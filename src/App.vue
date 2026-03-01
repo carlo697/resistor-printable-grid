@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
 import ResistorCard, { type Tolerance } from "./components/ResistorCard.vue";
+import ResistorGrid from "./components/ResistorGrid.vue";
 
 const series: Record<Tolerance, number[]> = {
   5: [
@@ -15,23 +16,49 @@ const multipliers = [
 
 const tolerance = ref<Tolerance>(5);
 const seriesToUse = computed(() => series[tolerance.value]);
+
+const valuesToUse = computed(() =>
+  multipliers.flatMap((multiplier) =>
+    seriesToUse.value.map((series) => series * multiplier),
+  ),
+);
+
+const width = ref(18);
+const height = ref(10);
+const paddingTop = ref(0);
+const paddingBottom = ref(1.5);
+const paddingLeft = ref(1.5);
+const paddingRight = ref(1.5);
 </script>
 
 <template>
-  <div class="flex flex-wrap">
-    <template v-for="multiplier in multipliers">
-      <ResistorCard
-        v-for="value in seriesToUse"
-        :value="value * multiplier"
-        :tolerance="5"
-        style="
-          width: 18mm;
-          height: 10mm;
-          padding-left: 1.5mm;
-          padding-right: 1.5mm;
-          padding-bottom: 1.5mm;
-        "
-      />
-    </template>
+  <main class="container mx-auto py-8 grid grid-cols-1 gap-8 print:hidden">
+    <div>
+      <h1 class="text-4xl font-semibold">Resistor Printable Grid Generator</h1>
+    </div>
+
+    <!-- Preview grid -->
+    <ResistorGrid
+      :values="valuesToUse"
+      :width="width"
+      :height="height"
+      :paddingTop="paddingTop"
+      :paddingBottom="paddingBottom"
+      :paddingLeft="paddingLeft"
+      :paddingRight="paddingRight"
+    />
+  </main>
+
+  <!-- Printable grid -->
+  <div class="flex flex-wrap not-print:hidden">
+    <ResistorGrid
+      :values="valuesToUse"
+      :width="width"
+      :height="height"
+      :paddingTop="paddingTop"
+      :paddingBottom="paddingBottom"
+      :paddingLeft="paddingLeft"
+      :paddingRight="paddingRight"
+    />
   </div>
 </template>
