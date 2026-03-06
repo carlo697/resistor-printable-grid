@@ -3,6 +3,7 @@ import { computed, ref } from "vue";
 import { type Tolerance } from "./components/ResistorCard.vue";
 import ResistorGrid from "./components/ResistorGrid.vue";
 import FieldNumber from "./components/form/FieldNumber.vue";
+import FieldRadio from "./components/form/FieldRadio.vue";
 
 const series: Record<Tolerance, number[]> = {
   5: [
@@ -30,12 +31,15 @@ const paddingTop = ref(0);
 const paddingBottom = ref(1.875);
 const paddingLeft = ref(1.875);
 const paddingRight = ref(1.875);
+const mode = ref<"resistor" | "manual">("resistor");
 </script>
 
 <template>
   <main class="container px-4 mx-auto py-8 grid grid-cols-1 gap-8 print:hidden">
     <div>
-      <h1 class="text-4xl font-semibold">Printable Electric Symbol Generator</h1>
+      <h1 class="text-4xl font-semibold">
+        Printable Electric Symbol Generator
+      </h1>
     </div>
 
     <form class="grid grid-cols-1 gap-4">
@@ -45,15 +49,44 @@ const paddingRight = ref(1.875);
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <FieldNumber name="paddingTop" label="Padding Top" v-model="paddingTop" />
-        <FieldNumber name="paddingBottom" label="Padding Bottom" v-model="paddingBottom" />
-        <FieldNumber name="paddingLeft" label="Padding Left" v-model="paddingLeft" />
-        <FieldNumber name="paddingRight" label="Padding Right" v-model="paddingRight" />
+        <FieldNumber
+          name="paddingTop"
+          label="Padding Top"
+          v-model="paddingTop"
+        />
+        <FieldNumber
+          name="paddingBottom"
+          label="Padding Bottom"
+          v-model="paddingBottom"
+        />
+        <FieldNumber
+          name="paddingLeft"
+          label="Padding Left"
+          v-model="paddingLeft"
+        />
+        <FieldNumber
+          name="paddingRight"
+          label="Padding Right"
+          v-model="paddingRight"
+        />
+      </div>
+
+      <div>
+        <FieldRadio
+          v-model="mode"
+          name="mode"
+          label="Mode"
+          :options="[
+            { label: 'Resistor', value: 'resistor' },
+            { label: 'Manual', value: 'manual' },
+          ]"
+        />
       </div>
     </form>
 
     <!-- Preview grid -->
     <ResistorGrid
+      v-if="mode === 'resistor'"
       :values="valuesToUse"
       :width="width"
       :height="height"
@@ -67,6 +100,7 @@ const paddingRight = ref(1.875);
   <!-- Printable grid -->
   <div class="flex flex-wrap not-print:hidden">
     <ResistorGrid
+      v-if="mode === 'resistor'"
       :values="valuesToUse"
       :width="width"
       :height="height"
