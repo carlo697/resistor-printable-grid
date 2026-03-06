@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
-import ResistorCard, { type Tolerance } from "./components/ResistorCard.vue";
+import { type Tolerance } from "./components/ResistorCard.vue";
 import ResistorGrid from "./components/ResistorGrid.vue";
+import FieldNumber from "./components/form/FieldNumber.vue";
 
 const series: Record<Tolerance, number[]> = {
   5: [
@@ -11,7 +12,7 @@ const series: Record<Tolerance, number[]> = {
 };
 
 const multipliers = [
-  0.1, 1, 10, 100, 1_000, 10_000, 100_000, 1_000_000, 10_000_000, 100_000_000,
+  0.1, 1, 10, 100, 1_000, 10_000, 100_000, 1_000_000, 10_000_000,
 ];
 
 const tolerance = ref<Tolerance>(5);
@@ -23,19 +24,33 @@ const valuesToUse = computed(() =>
   ),
 );
 
-const width = ref(18);
-const height = ref(10);
+const width = ref(22.5);
+const height = ref(12.5);
 const paddingTop = ref(0);
-const paddingBottom = ref(1.5);
-const paddingLeft = ref(1.5);
-const paddingRight = ref(1.5);
+const paddingBottom = ref(1.875);
+const paddingLeft = ref(1.875);
+const paddingRight = ref(1.875);
 </script>
 
 <template>
-  <main class="container mx-auto py-8 grid grid-cols-1 gap-8 print:hidden">
+  <main class="container px-4 mx-auto py-8 grid grid-cols-1 gap-8 print:hidden">
     <div>
-      <h1 class="text-4xl font-semibold">Resistor Printable Grid Generator</h1>
+      <h1 class="text-4xl font-semibold">Printable Electric Symbol Generator</h1>
     </div>
+
+    <form class="grid grid-cols-1 gap-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <FieldNumber name="width" label="Width" v-model="width" />
+        <FieldNumber name="height" label="Height" v-model="height" />
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <FieldNumber name="paddingTop" label="Padding Top" v-model="paddingTop" />
+        <FieldNumber name="paddingBottom" label="Padding Bottom" v-model="paddingBottom" />
+        <FieldNumber name="paddingLeft" label="Padding Left" v-model="paddingLeft" />
+        <FieldNumber name="paddingRight" label="Padding Right" v-model="paddingRight" />
+      </div>
+    </form>
 
     <!-- Preview grid -->
     <ResistorGrid
