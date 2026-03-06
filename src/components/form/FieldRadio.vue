@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import FieldLabel from "./FieldLabel.vue";
 import type { BaseFieldProps } from "./types";
 
 interface FieldRadioProps extends BaseFieldProps {
@@ -12,7 +13,7 @@ const model = defineModel<unknown | undefined>();
 
 <template>
   <div>
-    <label :for="name" class="block mb-1">{{ label }} </label>
+    <FieldLabel :for="name">{{ label }} </FieldLabel>
 
     <div v-for="option in options" class="flex gap-2">
       <input

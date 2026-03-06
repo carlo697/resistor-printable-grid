@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import FieldLabel from "./FieldLabel.vue";
 import type { BaseFieldProps } from "./types";
 
 defineProps<BaseFieldProps>();
@@ -7,7 +8,7 @@ const model = defineModel<number | undefined>();
 
 <template>
   <div>
-    <label :for="name" class="block mb-1">{{ label }} </label>
+    <FieldLabel :for="name">{{ label }} </FieldLabel>
 
     <input
       :id="name"
