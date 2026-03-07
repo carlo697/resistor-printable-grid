@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import PrintableCard from "../cards/PrintableCard.vue";
+import SymbolIcon from "../SymbolIcon.vue";
 import type { ManualItem } from "./types";
 
 export type Tolerance = 5;
@@ -31,15 +32,26 @@ const props = defineProps<{
     <div class="manual-item-card-subtitle font-medium leading-none">
       {{ item.subTitle }}
     </div>
+
+    <SymbolIcon
+      v-if="item.imageType === 'symbol' && item.symbol"
+      :type="item.symbol"
+      class="symbol-icon"
+      :color="item.color"
+    />
   </PrintableCard>
 </template>
 
 <style scoped>
 .manual-item-card-title {
-  font-size: 40cqh;
+  font-size: 30cqh;
 }
 
 .manual-item-card-subtitle {
   font-size: 20cqh;
+}
+
+.symbol-icon {
+  font-size: 50cqh;
 }
 </style>
