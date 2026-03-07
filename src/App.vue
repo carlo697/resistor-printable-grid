@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import FieldNumber from "./components/form/FieldNumber.vue";
 import FieldRadio from "./components/form/FieldRadio.vue";
+import ManualGenerator from "./components/manual-generator/ManualGenerator.vue";
 import ResistorGenerator from "./components/resistors/ResistorGenerator.vue";
 import { useLocalStorage } from "@vueuse/core";
 
@@ -15,11 +16,7 @@ const mode = useLocalStorage<"resistor" | "manual">("mode", "resistor");
 
 <template>
   <main class="container px-4 mx-auto py-8 grid grid-cols-1 gap-8 print:hidden">
-    <div>
-      <h1 class="text-4xl font-semibold">
-        Printable Electric Symbol Generator
-      </h1>
-    </div>
+    <h1 class="text-4xl font-semibold">Printable Electric Symbol Generator</h1>
 
     <form class="grid grid-cols-1 gap-4">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -66,6 +63,15 @@ const mode = useLocalStorage<"resistor" | "manual">("mode", "resistor");
     <!-- Preview grid -->
     <ResistorGenerator
       v-if="mode === 'resistor'"
+      :width="width"
+      :height="height"
+      :paddingTop="paddingTop"
+      :paddingBottom="paddingBottom"
+      :paddingLeft="paddingLeft"
+      :paddingRight="paddingRight"
+    />
+    <ManualGenerator
+      v-else-if="mode === 'manual'"
       :width="width"
       :height="height"
       :paddingTop="paddingTop"
