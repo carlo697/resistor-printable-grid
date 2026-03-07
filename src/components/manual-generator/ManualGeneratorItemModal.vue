@@ -5,23 +5,37 @@ import Modal from "../modals/Modal.vue";
 import type { ManualItem } from "./types";
 import FieldText from "../form/FieldText.vue";
 
+const props = defineProps<{ initialItem?: ManualItem }>();
+
 const isOpen = defineModel<boolean>({ required: true });
 
-const title = ref<string | undefined>();
-const subtitle = ref<string | undefined>();
+const title = ref<string | undefined>(props.initialItem?.title);
+const subtitle = ref<string | undefined>(props.initialItem?.subTitle);
 
-const emit = defineEmits<{ success: [item: ManualItem] }>();
+const emit = defineEmits<{
+  add: [item: ManualItem];
+  edit: [item: ManualItem];
+}>();
 
 function handleClose() {
   isOpen.value = false;
 }
 
 function handleSave() {
-  emit("success", {
-    id: new Date().getTime(),
-    title: title.value,
-    subTitle: subtitle.value,
-  });
+  if (props.initialItem) {
+    emit("edit", {
+      id: props.initialItem.id,
+      title: title.value,
+      subTitle: subtitle.value,
+    });
+  } else {
+    emit("add", {
+      id: new Date().getTime(),
+      title: title.value,
+      subTitle: subtitle.value,
+    });
+  }
+
   isOpen.value = false;
 }
 </script>

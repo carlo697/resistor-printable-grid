@@ -19,12 +19,25 @@ defineProps<{
 
 const items = useLocalStorage<ManualItem[]>("manualItems", []);
 const isModalOpen = ref(false);
+const targetModalItem = ref<ManualItem | undefined>(undefined);
 
 function add(item: ManualItem) {
   items.value = [...items.value, item];
 }
 
+function edit(item: ManualItem) {
+  items.value = items.value.map((_item) =>
+    _item.id === item.id ? item : _item,
+  );
+}
+
+function handleAddItem() {
+  targetModalItem.value = undefined;
+  isModalOpen.value = true;
+}
+
 function handleEditItem(item: ManualItem) {
+  targetModalItem.value = item;
   isModalOpen.value = true;
 }
 
@@ -45,7 +58,7 @@ function handleDeleteItem(item: ManualItem) {
         @delete="handleDeleteItem(item)"
       />
 
-      <Card is="button" @click="isModalOpen = true" class="hover:bg-gray-200">
+      <Card is="button" @click="handleAddItem" class="hover:bg-gray-200">
         Add new
       </Card>
     </div>
@@ -67,6 +80,12 @@ function handleDeleteItem(item: ManualItem) {
       </PrintableGrid>
     </template>
 
-    <ManualGeneratorItemModal v-model="isModalOpen" @success="add" />
+    <ManualGeneratorItemModal
+      v-if="isModalOpen"
+      v-model="isModalOpen"
+      :initialItem="targetModalItem"
+      @add="add"
+      @edit="edit"
+    />
   </div>
 </template>
