@@ -1,16 +1,16 @@
 <script setup lang="ts">
-import { ref } from "vue";
 import FieldNumber from "./components/form/FieldNumber.vue";
 import FieldRadio from "./components/form/FieldRadio.vue";
 import ResistorGenerator from "./components/resistors/ResistorGenerator.vue";
+import { useLocalStorage } from "@vueuse/core";
 
-const width = ref(22.5);
-const height = ref(12.5);
-const paddingTop = ref(0);
-const paddingBottom = ref(1.875);
-const paddingLeft = ref(1.875);
-const paddingRight = ref(1.875);
-const mode = ref<"resistor" | "manual">("resistor");
+const width = useLocalStorage("width", 22.5);
+const height = useLocalStorage("height", 12.5);
+const paddingTop = useLocalStorage("paddingTop", 0);
+const paddingBottom = useLocalStorage("paddingBottom", 1.875);
+const paddingLeft = useLocalStorage("paddingLeft", 1.875);
+const paddingRight = useLocalStorage("paddingRight", 1.875);
+const mode = useLocalStorage<"resistor" | "manual">("mode", "resistor");
 </script>
 
 <template>
