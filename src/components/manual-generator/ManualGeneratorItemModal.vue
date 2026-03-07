@@ -41,8 +41,8 @@ function handleSave() {
 </script>
 
 <template>
-  <Modal v-model="isOpen" :maxWidth="600">
-    <h2>Add new card</h2>
+  <Modal v-model="isOpen" :maxWidth="400">
+    <h2 class="font-bold text-xl w-full">Add new card</h2>
 
     <FieldText name="title" label="Title" v-model="title" />
     <FieldText name="subtitle" label="Subtitle" v-model="subtitle" />

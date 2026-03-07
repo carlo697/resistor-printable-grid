@@ -11,7 +11,7 @@ const isOpen = defineModel<boolean>({ required: true });
       class="fixed top-0 left-0 w-full h-full bg-gray-800/50 flex items-center justify-center p-6"
     >
       <div
-        class="bg-white rounded-xl p-6 grid grid-cols-1 gap-4"
+        class="bg-white rounded-xl p-6 grid grid-cols-1 gap-4 grow"
         :style="{ maxWidth: `${maxWidth}px` }"
       >
         <slot />
