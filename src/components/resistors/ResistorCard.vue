@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from "vue";
-import resistorImage from "../assets/resistor.png";
+import resistorImage from "../../assets/resistor.png";
 
 export type Tolerance = 5;
 

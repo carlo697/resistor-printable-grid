@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
-import { type Tolerance } from "./components/ResistorCard.vue";
-import ResistorGrid from "./components/ResistorGrid.vue";
+import { type Tolerance } from "./components/resistors/ResistorCard.vue";
+import ResistorGrid from "./components/resistors/ResistorGrid.vue";
 import FieldNumber from "./components/form/FieldNumber.vue";
 import FieldRadio from "./components/form/FieldRadio.vue";
 
