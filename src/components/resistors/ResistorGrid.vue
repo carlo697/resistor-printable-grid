@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import ResistorCard from './ResistorCard.vue';
+import ResistorCard from "./ResistorCard.vue";
 
 defineProps<{
   values: number[];
@@ -18,14 +18,12 @@ defineProps<{
       v-for="value in values"
       :value="value"
       :tolerance="5"
-      :style="{
-        width: `${width}mm`,
-        height: `${height}mm `,
-        paddingLeft: `${paddingLeft}mm`,
-        paddingRight: `${paddingRight}mm`,
-        paddingTop: `${paddingTop}mm`,
-        paddingBottom: `${paddingBottom}mm`,
-      }"
+      :width="width"
+      :height="height"
+      :paddingTop="paddingTop"
+      :paddingBottom="paddingBottom"
+      :paddingLeft="paddingLeft"
+      :paddingRight="paddingRight"
     />
   </div>
 </template>

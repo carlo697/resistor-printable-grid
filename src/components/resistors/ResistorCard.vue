@@ -1,12 +1,19 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import resistorImage from "../../assets/resistor.png";
+import PrintableCard from "../cards/PrintableCard.vue";
 
 export type Tolerance = 5;
 
 const props = defineProps<{
   value: number;
   tolerance: Tolerance;
+  width: number;
+  height: number;
+  paddingTop: number;
+  paddingBottom: number;
+  paddingLeft: number;
+  paddingRight: number;
 }>();
 
 const formattedValue = computed(() => {
@@ -102,42 +109,39 @@ const multiplierColor = computed(() => {
 </script>
 
 <template>
-  <div class="border-[0.5px]">
-    <div class="resistor-card flex flex-col items-center">
-      <div class="resistor-card-value font-semibold">{{ formattedValue }}</div>
+  <PrintableCard
+    :width="width"
+    :height="height"
+    :paddingTop="paddingTop"
+    :paddingBottom="paddingBottom"
+    :paddingLeft="paddingLeft"
+    :paddingRight="paddingRight"
+  >
+    <div class="resistor-card-value font-semibold">{{ formattedValue }}</div>
 
-      <div class="resistor-card-tolerance font-medium">
-        ±{{ tolerance }}% (J)
-      </div>
+    <div class="resistor-card-tolerance font-medium">±{{ tolerance }}% (J)</div>
 
-      <div class="resistor-card-img aspect-300/61 relative">
-        <img :src="resistorImage" />
+    <div class="resistor-card-img aspect-300/61 relative">
+      <img :src="resistorImage" />
 
-        <div class="band band-1" :style="{ backgroundColor: band1Color }"></div>
+      <div class="band band-1" :style="{ backgroundColor: band1Color }"></div>
 
-        <div class="band band-2" :style="{ backgroundColor: band2Color }"></div>
+      <div class="band band-2" :style="{ backgroundColor: band2Color }"></div>
 
-        <div
-          class="band band-3"
-          :style="{ backgroundColor: multiplierColor }"
-        ></div>
+      <div
+        class="band band-3"
+        :style="{ backgroundColor: multiplierColor }"
+      ></div>
 
-        <div
-          class="band band-4"
-          :style="{ backgroundColor: toleranceToColor[props.tolerance] }"
-        ></div>
-      </div>
+      <div
+        class="band band-4"
+        :style="{ backgroundColor: toleranceToColor[props.tolerance] }"
+      ></div>
     </div>
-  </div>
+  </PrintableCard>
 </template>
 
 <style scoped>
-.resistor-card {
-  width: 100%;
-  height: 100%;
-  container-type: size;
-}
-
 .resistor-card-value {
   font-size: 40cqh;
   line-height: 1;
