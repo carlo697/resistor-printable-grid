@@ -29,7 +29,7 @@ function handleEditItem(item: ManualItem) {
 }
 
 function handleDeleteItem(item: ManualItem) {
-  items.value = items.value.filter((_item) => _item.title !== item.title);
+  items.value = items.value.filter((_item) => _item.id !== item.id);
 }
 </script>
 
