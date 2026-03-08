@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="8.9135809mm"
+   height="11.560604mm"
+   viewBox="0 0 8.9135809 11.560604"
+   version="1.1"
+   id="svg1"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1">
+    <marker
+       style="overflow:visible"
+       id="TriangleInM-3-4-1"
+       refX="0"
+       refY="0"
+       orient="auto">
+      <path
+         transform="scale(-0.4)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path5871-67-7-5" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="TriangleInM-3-3-8-9"
+       refX="0"
+       refY="0"
+       orient="auto">
+      <path
+         transform="scale(-0.4)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path5871-67-5-4-8" />
+    </marker>
+  </defs>
+  <g
+     id="layer1"
+     transform="translate(-182.95127,-114.227)">
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 85.989582,-30.427067 v -2.116666"
+       id="path1"
+       transform="translate(101.64609,156.08238)" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 84.666666,-33.0729 1.322916,0.529167"
+       id="path2"
+       transform="translate(101.64609,156.08238)" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 85.989582,-38.893733 1.322916,0.529167"
+       id="path3"
+       transform="translate(101.64609,156.08238)" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 84.666666,-35.189567 2.645833,1.058334"
+       id="path4"
+       transform="translate(101.64609,156.08238)" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 87.312499,-34.131234 84.666666,-33.0729"
+       id="path5"
+       transform="translate(101.64609,156.08238)" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 84.666666,-37.306233 2.645833,1.058334"
+       id="path6"
+       transform="translate(101.64609,156.08238)" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 87.312499,-36.2479 -2.645833,1.058334"
+       id="path7"
+       transform="translate(101.64609,156.08238)" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 87.312499,-38.364566 -2.645833,1.058334"
+       id="path8"
+       transform="translate(101.64609,156.08238)" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.265;stroke-linecap:round;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
+       d="M 85.989582,-38.893733 V -41.0104"
+       id="path9"
+       transform="translate(101.64609,156.08238)" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.265;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#TriangleInM-3-4-1)"
+       d="m 153.47924,231.13645 -0.92521,-1.25257"
+       id="path10"
+       transform="translate(31.82815,-115.52438)" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.265;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#TriangleInM-3-3-8-9)"
+       d="m 152.18083,232.06673 -0.92521,-1.25257"
+       id="path11"
+       transform="translate(31.82815,-115.52438)" />
+    <circle
+       style="fill:none;stroke:#000000;stroke-width:0.265;stroke-dasharray:none"
+       id="path17"
+       cx="155.84866"
+       cy="235.84399"
+       r="4.0555377"
+       transform="translate(31.82815,-115.52438)" />
+  </g>
+</svg>

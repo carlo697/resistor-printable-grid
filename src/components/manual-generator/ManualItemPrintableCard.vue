@@ -29,7 +29,9 @@ const props = defineProps<{
       {{ item.title }}
     </div>
 
-    <div class="manual-item-card-subtitle font-medium leading-none">
+    <div
+      class="manual-item-card-subtitle font-medium leading-none text-gray-600"
+    >
       {{ item.subTitle }}
     </div>
 

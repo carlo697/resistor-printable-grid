@@ -11,11 +11,11 @@ const emit = defineEmits<{ edit: []; delete: [] }>();
 
 <template>
   <Card>
-    <h2>
+    <h2 class="font-semibold">
       {{ item.title }}
     </h2>
 
-    <h3>
+    <h3 class="font-medium text-gray-600">
       {{ item.subTitle }}
     </h3>
 
