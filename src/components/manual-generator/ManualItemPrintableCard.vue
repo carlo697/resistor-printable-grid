@@ -38,7 +38,10 @@ const props = defineProps<{
     <SymbolIcon
       v-if="item.imageType === 'symbol' && item.symbol"
       :type="item.symbol"
-      class="symbol-icon"
+      :class="{
+        'symbol-icon-no-subtitle': !item.subTitle,
+        'symbol-icon': item.subTitle,
+      }"
       :color="item.color"
     />
   </PrintableCard>
@@ -55,5 +58,9 @@ const props = defineProps<{
 
 .symbol-icon {
   font-size: 50cqh;
+}
+
+.symbol-icon-no-subtitle {
+  font-size: 70cqh;
 }
 </style>
