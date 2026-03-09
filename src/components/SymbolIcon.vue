@@ -1,17 +1,41 @@
 <script lang="ts">
 import type { Component } from "vue";
+import capacitor from "../assets/capacitor.svg?component";
+import potentiometer from "../assets/potentiometer.svg?component";
+import quartz from "../assets/quartz.svg?component";
+import relay from "../assets/relay.svg?component";
 import led_diode from "../assets/led_diode.svg?component";
 import zener_diode from "../assets/zener_diode.svg?component";
 import npn_bjt from "../assets/npn_bjt.svg?component";
 import pnp_bjt from "../assets/pnp_bjt.svg?component";
+import thyristor from "../assets/thyristor.svg?component";
+import diac from "../assets/diac.svg?component";
+import triac from "../assets/triac.svg?component";
 import ldr from "../assets/ldr.svg?component";
+import op_amp from "../assets/op_amp.svg?component";
+import dip_8 from "../assets/dip_8.svg?component";
+import dip_16 from "../assets/dip_16.svg?component";
+import dip_32 from "../assets/dip_32.svg?component";
+import to_220 from "../assets/to_220.svg?component";
 
 export const symbolTypes = [
+  "capacitor",
+  "potentiometer",
+  "quartz",
+  "relay",
   "led_diode",
   "zener_diode",
   "npn_bjt",
   "pnp_bjt",
+  "thyristor",
+  "diac",
+  "triac",
   "ldr",
+  "op_amp",
+  "dip_8",
+  "dip_16",
+  "dip_32",
+  "to_220",
 ] as const;
 export type SymbolType = (typeof symbolTypes)[number];
 
@@ -19,6 +43,18 @@ export const symbols: Record<
   SymbolType,
   { svg?: Component; supportColor?: true }
 > = {
+  capacitor: {
+    svg: capacitor,
+  },
+  potentiometer: {
+    svg: potentiometer,
+  },
+  quartz: {
+    svg: quartz,
+  },
+  relay: {
+    svg: relay,
+  },
   led_diode: {
     svg: led_diode,
     supportColor: true,
@@ -32,8 +68,32 @@ export const symbols: Record<
   pnp_bjt: {
     svg: pnp_bjt,
   },
+  thyristor: {
+    svg: thyristor,
+  },
+  diac: {
+    svg: diac,
+  },
+  triac: {
+    svg: triac,
+  },
   ldr: {
     svg: ldr,
+  },
+  op_amp: {
+    svg: op_amp,
+  },
+  dip_8: {
+    svg: dip_8,
+  },
+  dip_16: {
+    svg: dip_16,
+  },
+  dip_32: {
+    svg: dip_32,
+  },
+  to_220: {
+    svg: to_220,
   },
 };
 </script>

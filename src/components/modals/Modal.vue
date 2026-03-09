@@ -8,7 +8,7 @@ const isOpen = defineModel<boolean>({ required: true });
   <Teleport to="#modals">
     <div
       v-show="isOpen"
-      class="fixed top-0 left-0 w-full h-full bg-gray-800/50 flex items-center justify-center p-6"
+      class="fixed top-0 left-0 w-full h-full bg-gray-800/50 flex items-start justify-center p-6 overflow-y-auto"
     >
       <div
         class="bg-white rounded-xl p-6 grid grid-cols-1 gap-4 grow"
