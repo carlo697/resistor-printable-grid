@@ -63,7 +63,7 @@ const selectedSymbol = computed(() =>
 </script>
 
 <template>
-  <Modal v-model="isOpen" :maxWidth="400">
+  <Modal v-model="isOpen" :maxWidth="500">
     <h2 class="font-bold text-xl w-full">Add new card</h2>
 
     <FieldText name="title" label="Title" v-model="title" />
@@ -88,6 +88,8 @@ const selectedSymbol = computed(() =>
         :options="
           symbolTypes.map((symbol) => ({ label: symbol, value: symbol }))
         "
+        :columns="3"
+        highlight
       >
         <template #icon="{ option }">
           <SymbolIcon :type="option.value" class="text-3xl" />
