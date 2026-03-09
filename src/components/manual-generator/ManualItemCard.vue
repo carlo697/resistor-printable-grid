@@ -10,12 +10,12 @@ const emit = defineEmits<{ edit: []; delete: [] }>();
 </script>
 
 <template>
-  <Card>
-    <h2 class="font-semibold">
+  <Card class="grid grid-cols-1 gap-1">
+    <h2 class="font-semibold leading-none">
       {{ item.title }}
     </h2>
 
-    <h3 class="font-medium text-gray-600">
+    <h3 v-if="item.subTitle" class="font-medium text-gray-600 leading-none">
       {{ item.subTitle }}
     </h3>
 
