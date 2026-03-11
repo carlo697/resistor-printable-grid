@@ -4,6 +4,7 @@ import capacitor from "../assets/capacitor.svg?component";
 import potentiometer from "../assets/potentiometer.svg?component";
 import quartz from "../assets/quartz.svg?component";
 import button from "../assets/button.svg?component";
+import _switch from "../assets/_switch.svg?component";
 import limit_switch from "../assets/limit_switch.svg?component";
 import relay from "../assets/relay.svg?component";
 import diode from "../assets/diode.svg?component";
@@ -33,6 +34,7 @@ export const symbolTypes = [
   "potentiometer",
   "quartz",
   "button",
+  "switch",
   "limit_switch",
   "relay",
   "diode",
@@ -74,6 +76,9 @@ export const symbols: Record<
   },
   button: {
     svg: button,
+  },
+  switch: {
+    svg: _switch,
   },
   limit_switch: {
     svg: limit_switch,
