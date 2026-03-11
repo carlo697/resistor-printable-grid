@@ -11,6 +11,7 @@ import SymbolIcon, {
   type SymbolType,
 } from "../SymbolIcon.vue";
 import FieldColor from "../form/FieldColor.vue";
+import { useFileDialog, useObjectUrl } from "@vueuse/core";
 
 const props = defineProps<{ initialItem?: ManualItem }>();
 
@@ -21,6 +22,29 @@ const subtitle = ref<string | undefined>(props.initialItem?.subTitle);
 const imageType = ref<ImageType>(props.initialItem?.imageType ?? "noImage");
 const symbol = ref<SymbolType | undefined>(props.initialItem?.symbol);
 const color = ref<string | undefined>(props.initialItem?.color);
+const imageBase64 = ref<string | undefined>(props.initialItem?.imageBase64);
+const imageBase64Src = computed(() =>
+  imageBase64.value ? `data:image/png;${imageBase64.value}` : undefined,
+);
+
+const { open, onChange } = useFileDialog({
+  accept: "image/*",
+});
+
+async function blobToBase64(blob: Blob): Promise<string> {
+  return await new Promise((resolve, _) => {
+    const reader = new FileReader();
+    reader.onloadend = () => resolve(reader.result as string);
+    reader.readAsDataURL(blob);
+  });
+}
+
+onChange(async (files) => {
+  const file = files?.item(0);
+  if (file) {
+    imageBase64.value = await blobToBase64(file);
+  }
+});
 
 const emit = defineEmits<{
   add: [item: ManualItem];
@@ -40,6 +64,7 @@ function handleSave() {
       imageType: imageType.value,
       symbol: symbol.value,
       color: color.value,
+      imageBase64: imageType.value === "base64" ? imageBase64.value : undefined,
     });
   } else {
     emit("add", {
@@ -49,6 +74,7 @@ function handleSave() {
       imageType: imageType.value,
       symbol: symbol.value,
       color: color.value,
+      imageBase64: imageType.value === "base64" ? imageBase64.value : undefined,
     });
   }
 
@@ -77,6 +103,7 @@ const selectedSymbol = computed(() =>
       :options="[
         { label: 'No image', value: 'noImage' },
         { label: 'Electronic symbol', value: 'symbol' },
+        { label: 'Custom Image', value: 'base64' },
       ]"
     />
 
@@ -102,6 +129,12 @@ const selectedSymbol = computed(() =>
         name="color"
         label="Color"
       />
+    </div>
+
+    <div v-if="imageType === 'base64'">
+      <Button type="button" @click="open"> Choose file </Button>
+
+      <img v-if="imageBase64Src" :src="imageBase64Src" />
     </div>
 
     <div class="flex gap-4 justify-end">

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { computed } from "vue";
 import PrintableCard from "../cards/PrintableCard.vue";
 import SymbolIcon from "../SymbolIcon.vue";
 import type { ManualItem } from "./types";
@@ -14,6 +15,12 @@ const props = defineProps<{
   paddingLeft: number;
   paddingRight: number;
 }>();
+
+const imageBase64 = computed(() =>
+  props.item.imageBase64
+    ? `data:image/png;${props.item.imageBase64}`
+    : undefined,
+);
 </script>
 
 <template>
@@ -43,6 +50,15 @@ const props = defineProps<{
         'symbol-icon': item.subTitle,
       }"
       :color="item.color"
+    />
+    <img
+      v-else-if="item.imageType === 'base64' && item.imageBase64"
+      :src="imageBase64"
+      class="h-[1em]"
+      :class="{
+        'symbol-icon-no-subtitle': !item.subTitle,
+        'symbol-icon': item.subTitle,
+      }"
     />
   </PrintableCard>
 </template>

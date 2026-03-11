@@ -1,12 +1,19 @@
 <script setup lang="ts">
+import { computed } from "vue";
 import Button from "../buttons/Button.vue";
 import Card from "../cards/Card.vue";
 import SymbolIcon from "../SymbolIcon.vue";
 import type { ManualItem } from "./types";
 
-defineProps<{ item: ManualItem }>();
+const props = defineProps<{ item: ManualItem }>();
 
 const emit = defineEmits<{ edit: []; delete: [] }>();
+
+const imageBase64 = computed(() =>
+  props.item.imageBase64
+    ? `data:image/png;${props.item.imageBase64}`
+    : undefined,
+);
 </script>
 
 <template>
@@ -24,6 +31,11 @@ const emit = defineEmits<{ edit: []; delete: [] }>();
       :type="item.symbol"
       class="text-[64px]"
       :color="item.color"
+    />
+    <img
+      v-else-if="item.imageType === 'base64' && item.imageBase64"
+      :src="imageBase64"
+      class="mx-auto max-w-full"
     />
 
     <div class="flex gap-2 justify-between">

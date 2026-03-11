@@ -1,6 +1,6 @@
 import type { SymbolType } from "../SymbolIcon.vue";
 
-export type ImageType = "noImage" | "symbol";
+export type ImageType = "noImage" | "symbol" | "base64";
 
 export interface ManualItem {
   id: number;
@@ -9,4 +9,5 @@ export interface ManualItem {
   imageType?: ImageType;
   symbol?: SymbolType;
   color?: string;
+  imageBase64?: string;
 }
