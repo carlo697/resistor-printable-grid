@@ -8,6 +8,7 @@
    version="1.1"
    id="svg1"
    inkscape:version="1.4.2 (f4327f4, 2025-05-13)"
+   sodipodi:docname="npn_bjt.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -22,9 +23,9 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
-     inkscape:zoom="11.671309"
-     inkscape:cx="-3.3843675"
-     inkscape:cy="34.529117"
+     inkscape:zoom="33.011447"
+     inkscape:cx="12.465373"
+     inkscape:cy="19.614408"
      inkscape:window-width="2560"
      inkscape:window-height="1351"
      inkscape:window-x="2391"
@@ -32,24 +33,7 @@
      inkscape:window-maximized="1"
      inkscape:current-layer="layer1" />
   <defs
-     id="defs1">
-    <marker
-       inkscape:collect="always"
-       inkscape:isstock="true"
-       style="overflow:visible"
-       id="TriangleInM-4-7-5"
-       refX="0"
-       refY="0"
-       orient="auto"
-       inkscape:stockid="TriangleInM">
-      <path
-         transform="scale(-0.4)"
-         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
-         d="M 5.77,0 -2.88,5 V -5 Z"
-         id="path5871-95-5-9"
-         inkscape:connector-curvature="0" />
-    </marker>
-  </defs>
+     id="defs1" />
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
@@ -90,18 +74,34 @@
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cc"
        transform="translate(125.73312,54.773004)" />
-    <path
-       style="fill:none;stroke:#000000;stroke-width:0.265;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#TriangleInM-4-7-5)"
-       d="m 36.247915,55.699997 -1.852083,-1.32292"
+    <g
        id="path59"
-       inkscape:connector-curvature="0"
-       sodipodi:nodetypes="cc"
-       transform="translate(125.73312,54.773004)" />
+       style="opacity:1"
+       transform="translate(125.73312,54.773004)">
+      <path
+         style="baseline-shift:baseline;display:inline;overflow:visible;vector-effect:none;stroke-linecap:round;stroke-linejoin:round;enable-background:accumulate;stop-color:#000000;stop-opacity:1"
+         d="m 34.472656,54.269531 a 0.13249999,0.13249999 0 0 0 -0.185547,0.03125 0.13249999,0.13249999 0 0 0 0.03125,0.183594 l 1.853516,1.324219 a 0.13249999,0.13249999 0 0 0 0.183594,-0.03125 0.13249999,0.13249999 0 0 0 -0.03125,-0.185547 z"
+         id="path5" />
+      <g
+         id="g2">
+        <g
+           id="path2"
+           style="opacity:1">
+          <path
+             style="baseline-shift:baseline;display:inline;overflow:visible;vector-effect:none;fill-rule:evenodd;enable-background:accumulate;stop-color:#000000;stop-opacity:1"
+             d="m 36.74561,56.055495 -1.054168,-0.10166 0.616113,-0.862557 z"
+             id="path3" />
+          <path
+             style="baseline-shift:baseline;display:inline;overflow:visible;vector-effect:none;fill-rule:evenodd;enable-background:accumulate;stop-color:#000000;stop-opacity:1"
+             d="m 36.320312,54.951172 -0.757812,1.060547 1.298828,0.125 z m -0.02539,0.28125 0.335937,0.740234 -0.810547,-0.07813 z"
+             id="path4" />
+        </g>
+      </g>
+    </g>
     <path
-       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 37.041666,56.229147 -2.645834,-1.85208"
+       style="baseline-shift:baseline;display:inline;overflow:visible;vector-effect:none;stroke-linecap:round;enable-background:accumulate;stop-color:#000000;stop-opacity:1;opacity:1"
+       d="m 34.472656,54.269531 a 0.1322915,0.1322915 0 0 0 -0.185547,0.03125 0.1322915,0.1322915 0 0 0 0.0332,0.185547 l 2.644532,1.851563 a 0.1322915,0.1322915 0 0 0 0.185547,-0.0332 0.1322915,0.1322915 0 0 0 -0.0332,-0.183593 z"
        id="path60"
-       inkscape:connector-curvature="0"
        transform="translate(125.73312,54.773004)" />
   </g>
 </svg>

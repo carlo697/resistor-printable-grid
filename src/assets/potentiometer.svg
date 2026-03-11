@@ -7,8 +7,31 @@
    viewBox="0 0 10.847916 5.5564582"
    version="1.1"
    id="svg1"
+   sodipodi:docname="potentiometer.svg"
+   inkscape:version="1.4.2 (f4327f4, 2025-05-13)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="53.950361"
+     inkscape:cx="20.491058"
+     inkscape:cy="10.500393"
+     inkscape:window-width="2560"
+     inkscape:window-height="1351"
+     inkscape:window-x="2391"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg1" />
   <defs
      id="defs1">
     <marker
@@ -69,9 +92,28 @@
      d="m 138.90615,69.850127 h 2.11666"
      id="path18"
      transform="translate(-130.30719,-65.748876)" />
-  <path
+  <g
      id="path19"
-     d="M 135.20198,67.733461 V 65.881377"
-     style="fill:none;stroke:#000000;stroke-width:0.264999;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#TriangleInM-17-8)"
-     transform="translate(-130.30719,-65.748876)" />
+     style="opacity:1"
+     transform="translate(-130.30719,-65.748876)">
+    <path
+       style="baseline-shift:baseline;display:inline;overflow:visible;vector-effect:none;stroke-linecap:round;stroke-linejoin:round;enable-background:accumulate;stop-color:#000000;stop-opacity:1"
+       d="m 135.20117,65.748047 a 0.1324995,0.1324995 0 0 0 -0.13086,0.132812 v 1.853516 a 0.1324995,0.1324995 0 0 0 0.13086,0.130859 0.1324995,0.1324995 0 0 0 0.13281,-0.130859 v -1.853516 a 0.1324995,0.1324995 0 0 0 -0.13281,-0.132812 z"
+       id="path5" />
+    <g
+       id="g2">
+      <g
+         id="path2"
+         style="opacity:1">
+        <path
+           style="baseline-shift:baseline;display:inline;overflow:visible;vector-effect:none;fill-rule:evenodd;enable-background:accumulate;stop-color:#000000;stop-opacity:1"
+           d="m 135.20198,68.345079 -0.53,-0.916897 h 1.06 z"
+           id="path3" />
+        <path
+           style="baseline-shift:baseline;display:inline;overflow:visible;vector-effect:none;fill-rule:evenodd;enable-background:accumulate;stop-color:#000000;stop-opacity:1"
+           d="m 134.54883,67.357422 0.65234,1.128906 0.65235,-1.128906 z m 0.24414,0.140625 h 0.8164 l -0.4082,0.705078 z"
+           id="path4" />
+      </g>
+    </g>
+  </g>
 </svg>

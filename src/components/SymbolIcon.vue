@@ -6,6 +6,7 @@ import quartz from "../assets/quartz.svg?component";
 import button from "../assets/button.svg?component";
 import limit_switch from "../assets/limit_switch.svg?component";
 import relay from "../assets/relay.svg?component";
+import diode from "../assets/diode.svg?component";
 import led_diode from "../assets/led_diode.svg?component";
 import zener_diode from "../assets/zener_diode.svg?component";
 import npn_bjt from "../assets/npn_bjt.svg?component";
@@ -34,6 +35,7 @@ export const symbolTypes = [
   "button",
   "limit_switch",
   "relay",
+  "diode",
   "led_diode",
   "zener_diode",
   "npn_bjt",
@@ -78,6 +80,9 @@ export const symbols: Record<
   },
   relay: {
     svg: relay,
+  },
+  diode: {
+    svg: diode,
   },
   led_diode: {
     svg: led_diode,
