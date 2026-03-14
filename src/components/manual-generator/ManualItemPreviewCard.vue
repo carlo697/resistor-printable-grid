@@ -7,7 +7,7 @@ import type { ManualItem } from "./types";
 
 const props = defineProps<{ item: ManualItem }>();
 
-const emit = defineEmits<{ edit: []; delete: []; move: [] }>();
+const emit = defineEmits<{ edit: []; copy: []; delete: []; move: [] }>();
 
 const imageBase64 = computed(() =>
   props.item.imageBase64
@@ -38,9 +38,10 @@ const imageBase64 = computed(() =>
       class="mx-auto max-w-full"
     />
 
-    <div class="flex flex-col lg:flex-row gap-2">
-      <Button @click="emit('edit')" icon="tabler-edit" />
-      <Button size="md" @click="emit('move')" icon="tabler:file-arrow-right">Move</Button>
+    <div class="flex flex-col lg:flex-row gap-1">
+      <Button size="md" @click="emit('edit')" icon="tabler-edit" />
+      <Button size="md" @click="emit('copy')" icon="tabler-copy" />
+      <Button size="md" @click="emit('move')" icon="tabler:file-arrow-right" />
 
       <div class="grow"></div>
 

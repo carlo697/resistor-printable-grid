@@ -56,6 +56,11 @@ function moveItem(item: ManualItem, newSheetId: number) {
   deleteItem(item);
 }
 
+function copyItem(item: ManualItem) {
+  const index = items.value.findIndex((_item) => _item.id === item.id);
+  items.value.splice(index, 0, { ...item, id: new Date().getTime() });
+}
+
 function handleAddItem() {
   targetModalItem.value = undefined;
   isModalOpen.value = true;
@@ -83,6 +88,7 @@ function handleMoveItem(item: ManualItem) {
         v-for="item in items"
         :item="item"
         @edit="handleEditItem(item)"
+        @copy="copyItem(item)"
         @delete="deleteItem(item)"
         @move="handleMoveItem(item)"
       />
