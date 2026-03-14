@@ -38,6 +38,10 @@ function edit(item: Sheet) {
     _item.id === item.id ? item : _item,
   );
 }
+
+function handlePrint() {
+  window.print();
+}
 </script>
 
 <template>
@@ -55,15 +59,26 @@ function edit(item: Sheet) {
 
       <Button @click="handleAddItem" icon="tabler-plus" />
 
-      <Button
+      <div
         v-if="selectedSheet"
-        class="absolute top-16 right-4"
-        @click="handleEditItem(selectedSheet)"
-        size="lg"
-        square
-        shadow
-        icon="tabler-edit"
-      />
+        class="absolute top-16 right-4 grid grid-cols-1 gap-2"
+      >
+        <Button
+          size="lg"
+          square
+          shadow
+          icon="tabler-edit"
+          @click="handleEditItem(selectedSheet)"
+        />
+
+        <Button
+          @click="handlePrint"
+          size="lg"
+          square
+          shadow
+          icon="tabler-printer"
+        />
+      </div>
     </div>
 
     <div v-if="selectedSheet">
