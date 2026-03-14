@@ -23,6 +23,9 @@ import and from "../assets/and.svg?component";
 import nand from "../assets/nand.svg?component";
 import or from "../assets/or.svg?component";
 import nor from "../assets/nor.svg?component";
+import d_flip_flop from "../assets/d_flip_flop.svg?component";
+import jk_flip_flop from "../assets/jk_flip_flop.svg?component";
+import sr_flip_flop from "../assets/sr_flip_flop.svg?component";
 import dip_8 from "../assets/dip_8.svg?component";
 import dip_14 from "../assets/dip_14.svg?component";
 import dip_16 from "../assets/dip_16.svg?component";
@@ -54,6 +57,9 @@ export const symbolTypes = [
   "nand",
   "or",
   "nor",
+  "d_flip_flop",
+  "jk_flip_flop",
+  "sr_flip_flop",
   "dip_8",
   "dip_14",
   "dip_16",
@@ -136,6 +142,15 @@ export const symbols: Record<
   },
   nor: {
     svg: nor,
+  },
+  d_flip_flop: {
+    svg: d_flip_flop,
+  },
+  jk_flip_flop: {
+    svg: jk_flip_flop,
+  },
+  sr_flip_flop: {
+    svg: sr_flip_flop,
   },
   dip_8: {
     svg: dip_8,
