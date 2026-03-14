@@ -20,7 +20,7 @@ const props = defineProps<{
 }>();
 
 const items = useLocalStorage<ManualItem[]>(
-  () => `${props.sheet.name}.manualItems`,
+  () => `${props.sheet.id}.manualItems`,
   [],
 );
 const isModalOpen = ref(false);

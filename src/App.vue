@@ -8,16 +8,26 @@ import { Icon } from "@iconify/vue";
 import SheetModal from "./components/sheets/SheetModal.vue";
 
 const sheets = useLocalStorage<Sheet[]>("sheets", []);
-const selectedSheetId = useLocalStorage<string | undefined>(
+const selectedSheetId = useLocalStorage<number | undefined>(
   "currentSheetId",
   undefined,
 );
 const selectedSheet = computed(() =>
-  sheets.value.find((sheet) => sheet.name === selectedSheetId.value),
+  sheets.value.find((sheet) => sheet.id === selectedSheetId.value),
 );
 
-const isSheetModalOpen = ref(false);
+const isModalOpen = ref(false);
 const targetModalItem = ref<Sheet | undefined>(undefined);
+
+function handleAddItem() {
+  targetModalItem.value = undefined;
+  isModalOpen.value = true;
+}
+
+function handleEditItem(item: Sheet) {
+  targetModalItem.value = item;
+  isModalOpen.value = true;
+}
 
 function add(item: Sheet) {
   sheets.value = [...sheets.value, item];
@@ -37,27 +47,37 @@ function edit(item: Sheet) {
     >
       <Button
         v-for="sheet in sheets"
-        @click="selectedSheetId = sheet.name"
-        :color="selectedSheetId === sheet.name ? 'primary' : 'default'"
+        @click="selectedSheetId = sheet.id"
+        :color="selectedSheetId === sheet.id ? 'primary' : 'default'"
       >
         {{ sheet.name }}
       </Button>
 
-      <Button @click="isSheetModalOpen = true">
+      <Button @click="handleAddItem">
         <Icon icon="tabler-plus" />
+      </Button>
+
+      <Button
+        v-if="selectedSheet"
+        class="absolute top-16 right-4"
+        @click="handleEditItem(selectedSheet)"
+        size="lg"
+        square
+        shadow
+      >
+        <Icon icon="tabler-edit" />
       </Button>
     </div>
 
-    <div
-      v-if="selectedSheet"
-      class="container px-4 mx-auto py-8 grid grid-cols-1 gap-8"
-    >
-      <SheetContent :sheet="selectedSheet" />
+    <div v-if="selectedSheet">
+      <div class="container px-4 mx-auto py-8 grid grid-cols-1 gap-8">
+        <SheetContent :sheet="selectedSheet" />
+      </div>
     </div>
 
     <SheetModal
-      v-if="isSheetModalOpen"
-      v-model="isSheetModalOpen"
+      v-if="isModalOpen"
+      v-model="isModalOpen"
       :sheet="targetModalItem"
       @add="add"
       @edit="edit"

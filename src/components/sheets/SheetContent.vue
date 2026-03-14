@@ -10,23 +10,23 @@ const props = defineProps<{
   sheet: Sheet;
 }>();
 
-const width = useLocalStorage(() => `${props.sheet.name}.width`, 22.5);
-const height = useLocalStorage(() => `${props.sheet.name}.height`, 12.5);
-const paddingTop = useLocalStorage(() => `${props.sheet.name}.paddingTop`, 0);
+const width = useLocalStorage(() => `${props.sheet.id}.width`, 22.5);
+const height = useLocalStorage(() => `${props.sheet.id}.height`, 12.5);
+const paddingTop = useLocalStorage(() => `${props.sheet.id}.paddingTop`, 0);
 const paddingBottom = useLocalStorage(
-  () => `${props.sheet.name}.paddingBottom`,
+  () => `${props.sheet.id}.paddingBottom`,
   1.875,
 );
 const paddingLeft = useLocalStorage(
-  () => `${props.sheet.name}.paddingLeft`,
+  () => `${props.sheet.id}.paddingLeft`,
   1.875,
 );
 const paddingRight = useLocalStorage(
-  () => `${props.sheet.name}.paddingRight`,
+  () => `${props.sheet.id}.paddingRight`,
   1.875,
 );
 const mode = useLocalStorage<"resistor" | "manual">(
-  () => `${props.sheet.name}.mode`,
+  () => `${props.sheet.id}.mode`,
   "resistor",
 );
 </script>
