@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useLocalStorage } from "@vueuse/core";
 import PrintableGrid from "../PrintableGrid.vue";
-import ManualItemCard from "../manual-generator/ManualItemCard.vue";
+import ManualItemPreviewCard from "./ManualItemPreviewCard.vue";
 import type { ManualItem } from "./types";
 import Card from "../cards/Card.vue";
 import ManualGeneratorItemModal from "./ManualGeneratorItemModal.vue";
@@ -51,7 +51,7 @@ function handleDeleteItem(item: ManualItem) {
     <h1 class="text-2xl font-semibold mb-4">Cards</h1>
 
     <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-6 mb-8 gap-2">
-      <ManualItemCard
+      <ManualItemPreviewCard
         v-for="item in items"
         :item="item"
         @edit="handleEditItem(item)"

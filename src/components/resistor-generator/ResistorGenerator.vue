@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
 import PrintableGrid from "../PrintableGrid.vue";
-import type { Tolerance } from "./ResistorCard.vue";
-import ResistorGrid from "./ResistorGrid.vue";
+import type { Tolerance } from "./ResistoPrintableCard.vue";
+import ResistoPrintableCard from "./ResistoPrintableCard.vue";
 
 defineProps<{
   width: number;
@@ -36,8 +36,10 @@ const valuesToUse = computed(() =>
 
 <template>
   <PrintableGrid>
-    <ResistorGrid
-      :values="valuesToUse"
+    <ResistoPrintableCard
+      v-for="value in valuesToUse"
+      :value="value"
+      :tolerance="5"
       :width="width"
       :height="height"
       :paddingTop="paddingTop"

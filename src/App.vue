@@ -2,7 +2,7 @@
 import FieldNumber from "./components/form/FieldNumber.vue";
 import FieldRadio from "./components/form/FieldRadio.vue";
 import ManualGenerator from "./components/manual-generator/ManualGenerator.vue";
-import ResistorGenerator from "./components/resistors/ResistorGenerator.vue";
+import ResistorGenerator from "./components/resistor-generator/ResistorGenerator.vue";
 import { useLocalStorage } from "@vueuse/core";
 
 const width = useLocalStorage("width", 22.5);
