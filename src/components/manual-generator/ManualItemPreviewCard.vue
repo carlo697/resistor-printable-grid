@@ -7,7 +7,7 @@ import type { ManualItem } from "./types";
 
 const props = defineProps<{ item: ManualItem }>();
 
-const emit = defineEmits<{ edit: []; delete: [] }>();
+const emit = defineEmits<{ edit: []; delete: []; move: [] }>();
 
 const imageBase64 = computed(() =>
   props.item.imageBase64
@@ -38,8 +38,11 @@ const imageBase64 = computed(() =>
       class="mx-auto max-w-full"
     />
 
-    <div class="flex gap-2 justify-between">
+    <div class="flex flex-col lg:flex-row gap-2">
       <Button size="md" @click="emit('edit')">Edit</Button>
+      <Button size="md" @click="emit('move')">Move</Button>
+
+      <div class="grow"></div>
 
       <Button size="md" color="error" @click="emit('delete')">Delete</Button>
     </div>

@@ -8,6 +8,7 @@ import ManualGeneratorItemModal from "./ManualGeneratorItemModal.vue";
 import { ref } from "vue";
 import ManualItemPrintableCard from "./ManualItemPrintableCard.vue";
 import type { Sheet } from "../sheets/types";
+import ManualGeneratorItemModalMove from "./ManualGeneratorItemModalMove.vue";
 
 const props = defineProps<{
   sheet: Sheet;
@@ -24,16 +25,35 @@ const items = useLocalStorage<ManualItem[]>(
   [],
 );
 const isModalOpen = ref(false);
+const isMoveModalOpen = ref(false);
 const targetModalItem = ref<ManualItem | undefined>(undefined);
 
-function add(item: ManualItem) {
+function addItem(item: ManualItem) {
   items.value = [...items.value, item];
 }
 
-function edit(item: ManualItem) {
+function editItem(item: ManualItem) {
   items.value = items.value.map((_item) =>
     _item.id === item.id ? item : _item,
   );
+}
+
+function deleteItem(item: ManualItem) {
+  items.value = items.value.filter((_item) => _item.id !== item.id);
+}
+
+function moveItem(item: ManualItem, newSheetId: number) {
+  const key = `${newSheetId}.manualItems`;
+  const itemsJson = localStorage.getItem(key);
+
+  if (itemsJson) {
+    const parsedItems: ManualItem[] = JSON.parse(itemsJson);
+    localStorage.setItem(key, JSON.stringify([...parsedItems, item]));
+  } else {
+    localStorage.setItem(key, JSON.stringify([item]));
+  }
+
+  deleteItem(item);
 }
 
 function handleAddItem() {
@@ -46,8 +66,9 @@ function handleEditItem(item: ManualItem) {
   isModalOpen.value = true;
 }
 
-function handleDeleteItem(item: ManualItem) {
-  items.value = items.value.filter((_item) => _item.id !== item.id);
+function handleMoveItem(item: ManualItem) {
+  targetModalItem.value = item;
+  isMoveModalOpen.value = true;
 }
 </script>
 
@@ -55,12 +76,15 @@ function handleDeleteItem(item: ManualItem) {
   <div>
     <h1 class="text-2xl font-semibold mb-4">Cards</h1>
 
-    <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-6 mb-8 gap-2">
+    <div
+      class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-6 mb-8 gap-2"
+    >
       <ManualItemPreviewCard
         v-for="item in items"
         :item="item"
         @edit="handleEditItem(item)"
-        @delete="handleDeleteItem(item)"
+        @delete="deleteItem(item)"
+        @move="handleMoveItem(item)"
       />
 
       <Card is="button" @click="handleAddItem" class="hover:bg-gray-200">
@@ -89,8 +113,16 @@ function handleDeleteItem(item: ManualItem) {
       v-if="isModalOpen"
       v-model="isModalOpen"
       :initialItem="targetModalItem"
-      @add="add"
-      @edit="edit"
+      @add="addItem"
+      @edit="editItem"
+    />
+
+    <ManualGeneratorItemModalMove
+      v-if="isMoveModalOpen && targetModalItem"
+      v-model="isMoveModalOpen"
+      :item="targetModalItem"
+      :currentSheet="sheet"
+      @move="moveItem"
     />
   </div>
 </template>

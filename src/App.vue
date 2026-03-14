@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useLocalStorage } from "@vueuse/core";
+import { StorageSerializers, useLocalStorage } from "@vueuse/core";
 import type { Sheet } from "./components/sheets/types";
 import Button from "./components/buttons/Button.vue";
 import SheetContent from "./components/sheets/SheetContent.vue";
@@ -11,6 +11,7 @@ const sheets = useLocalStorage<Sheet[]>("sheets", []);
 const selectedSheetId = useLocalStorage<number | undefined>(
   "currentSheetId",
   undefined,
+  { serializer: StorageSerializers.number },
 );
 const selectedSheet = computed(() =>
   sheets.value.find((sheet) => sheet.id === selectedSheetId.value),
