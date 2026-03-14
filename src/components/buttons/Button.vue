@@ -1,9 +1,12 @@
 <script setup lang="ts">
+import { Icon } from "@iconify/vue";
+
 interface ButtonProps {
   size?: "sm" | "md" | "lg";
   color?: "default" | "primary" | "error";
   square?: boolean;
   shadow?: boolean;
+  icon?: string;
 }
 
 const props = withDefaults(defineProps<ButtonProps>(), {
@@ -37,6 +40,8 @@ const props = withDefaults(defineProps<ButtonProps>(), {
       'shadow-sm': props.shadow,
     }"
   >
+    <Icon v-if="icon" :icon="icon" />
+
     <slot />
   </button>
 </template>

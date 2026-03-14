@@ -39,12 +39,17 @@ const imageBase64 = computed(() =>
     />
 
     <div class="flex flex-col lg:flex-row gap-2">
-      <Button size="md" @click="emit('edit')">Edit</Button>
-      <Button size="md" @click="emit('move')">Move</Button>
+      <Button @click="emit('edit')" icon="tabler-edit" />
+      <Button size="md" @click="emit('move')" icon="tabler:file-arrow-right">Move</Button>
 
       <div class="grow"></div>
 
-      <Button size="md" color="error" @click="emit('delete')">Delete</Button>
+      <Button
+        size="md"
+        color="error"
+        icon="tabler-trash"
+        @click="emit('delete')"
+      />
     </div>
   </Card>
 </template>

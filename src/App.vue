@@ -4,7 +4,6 @@ import type { Sheet } from "./components/sheets/types";
 import Button from "./components/buttons/Button.vue";
 import SheetContent from "./components/sheets/SheetContent.vue";
 import { computed, ref } from "vue";
-import { Icon } from "@iconify/vue";
 import SheetModal from "./components/sheets/SheetModal.vue";
 
 const sheets = useLocalStorage<Sheet[]>("sheets", []);
@@ -54,9 +53,7 @@ function edit(item: Sheet) {
         {{ sheet.name }}
       </Button>
 
-      <Button @click="handleAddItem">
-        <Icon icon="tabler-plus" />
-      </Button>
+      <Button @click="handleAddItem" icon="tabler-plus" />
 
       <Button
         v-if="selectedSheet"
@@ -65,9 +62,8 @@ function edit(item: Sheet) {
         size="lg"
         square
         shadow
-      >
-        <Icon icon="tabler-edit" />
-      </Button>
+        icon="tabler-edit"
+      />
     </div>
 
     <div v-if="selectedSheet">
