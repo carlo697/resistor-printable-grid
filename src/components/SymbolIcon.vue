@@ -26,6 +26,8 @@ import nor from "../assets/nor.svg?component";
 import d_flip_flop from "../assets/d_flip_flop.svg?component";
 import jk_flip_flop from "../assets/jk_flip_flop.svg?component";
 import sr_flip_flop from "../assets/sr_flip_flop.svg?component";
+import mux from "../assets/mux.svg?component";
+import demux from "../assets/demux.svg?component";
 import dip_8 from "../assets/dip_8.svg?component";
 import dip_14 from "../assets/dip_14.svg?component";
 import dip_16 from "../assets/dip_16.svg?component";
@@ -60,6 +62,8 @@ export const symbolTypes = [
   "d_flip_flop",
   "jk_flip_flop",
   "sr_flip_flop",
+  "mux",
+  "demux",
   "dip_8",
   "dip_14",
   "dip_16",
@@ -151,6 +155,12 @@ export const symbols: Record<
   },
   sr_flip_flop: {
     svg: sr_flip_flop,
+  },
+  mux: {
+    svg: mux,
+  },
+  demux: {
+    svg: demux,
   },
   dip_8: {
     svg: dip_8,
