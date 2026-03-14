@@ -1,83 +1,66 @@
 <script setup lang="ts">
-import FieldNumber from "./components/form/FieldNumber.vue";
-import FieldRadio from "./components/form/FieldRadio.vue";
-import ManualGenerator from "./components/manual-generator/ManualGenerator.vue";
-import ResistorGenerator from "./components/resistor-generator/ResistorGenerator.vue";
 import { useLocalStorage } from "@vueuse/core";
+import type { Sheet } from "./components/sheets/types";
+import Button from "./components/buttons/Button.vue";
+import SheetContent from "./components/sheets/SheetContent.vue";
+import { computed, ref } from "vue";
+import { Icon } from "@iconify/vue";
+import SheetModal from "./components/sheets/SheetModal.vue";
 
-const width = useLocalStorage("width", 22.5);
-const height = useLocalStorage("height", 12.5);
-const paddingTop = useLocalStorage("paddingTop", 0);
-const paddingBottom = useLocalStorage("paddingBottom", 1.875);
-const paddingLeft = useLocalStorage("paddingLeft", 1.875);
-const paddingRight = useLocalStorage("paddingRight", 1.875);
-const mode = useLocalStorage<"resistor" | "manual">("mode", "resistor");
+const sheets = useLocalStorage<Sheet[]>("sheets", []);
+const selectedSheetId = useLocalStorage<string | undefined>(
+  "currentSheetId",
+  undefined,
+);
+const selectedSheet = computed(() =>
+  sheets.value.find((sheet) => sheet.name === selectedSheetId.value),
+);
+
+const isSheetModalOpen = ref(false);
+const targetModalItem = ref<Sheet | undefined>(undefined);
+
+function add(item: Sheet) {
+  sheets.value = [...sheets.value, item];
+}
+
+function edit(item: Sheet) {
+  sheets.value = sheets.value.map((_item) =>
+    _item.id === item.id ? item : _item,
+  );
+}
 </script>
 
 <template>
-  <main class="container px-4 mx-auto py-8 grid grid-cols-1 gap-8 print:hidden">
-    <h1 class="text-4xl font-semibold">Printable Electric Symbol Generator</h1>
+  <div class="print:hidden">
+    <div
+      class="sticky top-0 p-2 border-b border-gray-200 bg-gray-100 flex gap-1"
+    >
+      <Button
+        v-for="sheet in sheets"
+        @click="selectedSheetId = sheet.name"
+        :color="selectedSheetId === sheet.name ? 'primary' : 'default'"
+      >
+        {{ sheet.name }}
+      </Button>
 
-    <form class="grid grid-cols-1 gap-4">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <FieldNumber name="width" label="Width" v-model="width" />
-        <FieldNumber name="height" label="Height" v-model="height" />
-      </div>
+      <Button @click="isSheetModalOpen = true">
+        <Icon icon="tabler-plus" />
+      </Button>
+    </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <FieldNumber
-          name="paddingTop"
-          label="Padding Top"
-          v-model="paddingTop"
-        />
-        <FieldNumber
-          name="paddingBottom"
-          label="Padding Bottom"
-          v-model="paddingBottom"
-        />
-        <FieldNumber
-          name="paddingLeft"
-          label="Padding Left"
-          v-model="paddingLeft"
-        />
-        <FieldNumber
-          name="paddingRight"
-          label="Padding Right"
-          v-model="paddingRight"
-        />
-      </div>
+    <div
+      v-if="selectedSheet"
+      class="container px-4 mx-auto py-8 grid grid-cols-1 gap-8"
+    >
+      <SheetContent :sheet="selectedSheet" />
+    </div>
 
-      <div>
-        <FieldRadio
-          v-model="mode"
-          name="mode"
-          label="Mode"
-          :options="[
-            { label: 'Resistor', value: 'resistor' },
-            { label: 'Manual', value: 'manual' },
-          ]"
-        />
-      </div>
-    </form>
-
-    <!-- Preview grid -->
-    <ResistorGenerator
-      v-if="mode === 'resistor'"
-      :width="width"
-      :height="height"
-      :paddingTop="paddingTop"
-      :paddingBottom="paddingBottom"
-      :paddingLeft="paddingLeft"
-      :paddingRight="paddingRight"
+    <SheetModal
+      v-if="isSheetModalOpen"
+      v-model="isSheetModalOpen"
+      :sheet="targetModalItem"
+      @add="add"
+      @edit="edit"
     />
-    <ManualGenerator
-      v-else-if="mode === 'manual'"
-      :width="width"
-      :height="height"
-      :paddingTop="paddingTop"
-      :paddingBottom="paddingBottom"
-      :paddingLeft="paddingLeft"
-      :paddingRight="paddingRight"
-    />
-  </main>
+  </div>
 </template>

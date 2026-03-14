@@ -7,8 +7,10 @@ import Card from "../cards/Card.vue";
 import ManualGeneratorItemModal from "./ManualGeneratorItemModal.vue";
 import { ref } from "vue";
 import ManualItemPrintableCard from "./ManualItemPrintableCard.vue";
+import type { Sheet } from "../sheets/types";
 
-defineProps<{
+const props = defineProps<{
+  sheet: Sheet;
   width: number;
   height: number;
   paddingTop: number;
@@ -17,7 +19,10 @@ defineProps<{
   paddingRight: number;
 }>();
 
-const items = useLocalStorage<ManualItem[]>("manualItems", []);
+const items = useLocalStorage<ManualItem[]>(
+  () => `${props.sheet.name}.manualItems`,
+  [],
+);
 const isModalOpen = ref(false);
 const targetModalItem = ref<ManualItem | undefined>(undefined);
 

@@ -11,7 +11,7 @@ import SymbolIcon, {
   type SymbolType,
 } from "../SymbolIcon.vue";
 import FieldColor from "../form/FieldColor.vue";
-import { useFileDialog, useObjectUrl } from "@vueuse/core";
+import { useFileDialog } from "@vueuse/core";
 
 const props = defineProps<{ initialItem?: ManualItem }>();
 

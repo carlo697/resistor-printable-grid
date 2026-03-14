@@ -1,7 +1,7 @@
 <script setup lang="ts">
 interface ButtonProps {
   size?: "sm" | "md" | "lg";
-  color?: "default" | "error";
+  color?: "default" | "primary" | "error";
 }
 
 withDefaults(defineProps<ButtonProps>(), { size: "lg", color: "default" });
@@ -9,7 +9,7 @@ withDefaults(defineProps<ButtonProps>(), { size: "lg", color: "default" });
 
 <template>
   <button
-    class="border leading-none rounded-lg hover:brightness-90"
+    class="border leading-none rounded-lg hover:brightness-90 flex items-center gap-1"
     :class="{
       'text-sm px-2 py-1': size === 'sm',
       'text-base px-3 py-1.5': size === 'md',
@@ -17,6 +17,7 @@ withDefaults(defineProps<ButtonProps>(), { size: "lg", color: "default" });
 
       'border-gray-200 bg-white': color === 'default',
       'border-transparent bg-red-500 text-white': color === 'error',
+      'border-transparent bg-mauve-500 text-white': color === 'primary',
     }"
   >
     <slot />
